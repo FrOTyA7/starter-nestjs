@@ -49,7 +49,7 @@ app.ws("/ws/shell", function (ws, req) {
   });
 });
 
-const port = process.env.PORT || 8082;
+const port = process.env.PORT || 8083;
 app.listen(port, "127.0.0.1", function () {
   console.log(`Started at http://localhost:${port}`);
 });
