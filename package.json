@@ -10,6 +10,7 @@
   "author": "Lonny Wong",
   "license": "MIT",
   "dependencies": {
+    "node-pty": "file://node-pty",
     "base64-js": "^1.5.1",
     "trzsz": "^1.1.0",
     "xterm": "^5.1.0",
