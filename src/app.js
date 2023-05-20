@@ -8,7 +8,7 @@ const os = require("os");
 console.log(7)
 const { spawn } = require("child_process");
 const express = require("express");
-const base64js = require("base64-js");
+// const base64js = require("base64-js");
 
 const app = express();
 require("express-ws")(app);
@@ -30,7 +30,8 @@ app.ws("/ws/shell", function (ws, req) {
     if (data.input) {
       shell.stdin.write(data.input.replaceAll('\r', '\n'));
     } else if (data.binary) {
-      shell.stdin.write(base64js.toByteArray(data.binary));
+    //  shell.stdin.write(base64js.toByteArray(data.binary));
+    console.log('bin')
     } else if (data.cols && data.rows) {
       console.log(`resize shell: cols=${data.cols}, rows=${data.rows}`);
       // shell.resize(data.cols, data.rows);
