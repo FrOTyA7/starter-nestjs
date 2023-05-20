@@ -5,6 +5,7 @@
  */
 
 const os = require("os");
+console.log(7)
 const pty = require("node-pty");
 const express = require("express");
 const base64js = require("base64-js");
