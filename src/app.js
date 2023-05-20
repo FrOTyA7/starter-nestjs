@@ -6,7 +6,7 @@
 
 const os = require("os");
 console.log(7)
-const pty = require("node-pty");
+const { spawn } = require("child_process");
 const express = require("express");
 const base64js = require("base64-js");
 
@@ -23,30 +23,23 @@ app.ws("/ws/shell", function (ws, req) {
   console.log("create shell");
 
   const cmd = os.platform() === "win32" ? "powershell.exe" : "bash";
-  const shell = pty.spawn(cmd, [], {
-    name: "xterm-color",
-    cols: Number(req.query.cols),
-    rows: Number(req.query.rows),
-    encoding: null,
-  });
-
-  shell.on("data", (data) => ws.send(data));
-
+  const shell = spawn(cmd, []);
+  shell.stdout.on("data", (data) => ws.send(data.toString()));
   ws.on("message", (message) => {
     data = JSON.parse(message);
     if (data.input) {
-      shell.write(data.input);
+      shell.stdin.write(data.input.replaceAll('\r', '\n'));
     } else if (data.binary) {
-      shell.write(base64js.toByteArray(data.binary));
+      shell.stdin.write(base64js.toByteArray(data.binary));
     } else if (data.cols && data.rows) {
       console.log(`resize shell: cols=${data.cols}, rows=${data.rows}`);
-      shell.resize(data.cols, data.rows);
+      // shell.resize(data.cols, data.rows);
     }
   });
 
   ws.on("close", () => {
     console.log("close shell");
-    shell.destroy();
+    //shell.destroy();
   });
 });
 
