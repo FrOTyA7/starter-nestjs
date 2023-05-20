@@ -1,62 +1,41 @@
-# NestJS Typescript template for Cyclic
+# Browser example for trzsz
 
-[![Deploy to Cyclic](https://deploy.cyclic.app/button.svg)](https://deploy.cyclic.app/)
+Simple webshell supports [trzsz](https://github.com/trzsz/trzsz). ( For security reasons, don't listen on public IP. )
 
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Recommend to use [TrzszAddon](../addon/).
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-   
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Test Guidelines
 
-## Installation
+* Start test server
+```sh
+git clone https://github.com/trzsz/trzsz.js.git
 
-```bash
-$ npm install
+cd trzsz.js
+npm install
+npm run build
+
+cd examples/browser
+npm install
+npm start
 ```
 
-## Running the app
-
-```bash
-# development - watch mode
-$ npm run start:dev
-
-# development - debug & watch mode
-$ npm run start:debug
-
-# production mode
-$ npm run start
+* Open web browser
+```
+http://localhost:8082
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+* Install trzsz server
+```sh
+sudo python -m pip install trzsz
 ```
 
-## Support
+* Upload files
+```sh
+trz
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+* Download files
+```sh
+tsz file1 file2
+```
