@@ -16,7 +16,7 @@ InitBrowserExample = async (terminal) => {
   term.open(terminal);
   fit.fit();
 
-  const ws = new WebSocket(`ws://${location.host}/ws/shell?cols=${term.cols}&rows=${term.rows}`);
+  const ws = new WebSocket(`wss://${location.host}/ws/shell?cols=${term.cols}&rows=${term.rows}`);
   ws.binaryType = "arraybuffer";
 
   // initialize trzsz filter
